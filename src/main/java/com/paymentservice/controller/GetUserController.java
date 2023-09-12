@@ -23,7 +23,7 @@ public class GetUserController {
   }
 
   @GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<User> getUserById(@PathVariable String username) {
+  public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
     final User user = getUserService.execute(username);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
   }

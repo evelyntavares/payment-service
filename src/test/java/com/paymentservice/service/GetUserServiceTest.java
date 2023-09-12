@@ -61,7 +61,6 @@ class GetUserServiceTest {
 
   @Test
   void shouldFindAllUsers() {
-    final String username = "elton123";
     final User expectedUser1 = createUser();
     final User expectedUser2 =
         new User(2L, "David", "david007", BigDecimal.ZERO, UserType.COMMON, "david@email.com");
