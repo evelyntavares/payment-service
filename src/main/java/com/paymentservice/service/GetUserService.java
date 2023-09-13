@@ -16,10 +16,6 @@ public class GetUserService {
     return repository.findUserById(id).orElseThrow();
   }
 
-  public User execute(String username) {
-    return repository.findUserByUsername(username).orElseThrow();
-  }
-
   public List<User> execute() {
     return repository.findAll();
   }

@@ -41,25 +41,6 @@ class GetUserServiceTest {
   }
 
   @Test
-  void shouldFindUserByUsername() {
-    final String username = "elton123";
-    final User expectedUser = createUser();
-
-    when(repository.findUserByUsername(username)).thenReturn(Optional.of(expectedUser));
-
-    final User userResult = getUserService.execute(username);
-
-    assertEquals(1L, userResult.getId());
-    assertEquals("Elton", userResult.getName());
-    assertEquals("elton123", userResult.getUsername());
-    assertEquals(BigDecimal.ONE, userResult.getBalance());
-    assertEquals(UserType.SELLER, userResult.getUserType());
-    assertEquals("elton@email.com", userResult.getEmail());
-
-    verify(repository, times(1)).findUserByUsername(username);
-  }
-
-  @Test
   void shouldFindAllUsers() {
     final User expectedUser1 = createUser();
     final User expectedUser2 =

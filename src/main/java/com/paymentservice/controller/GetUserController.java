@@ -19,13 +19,7 @@ public class GetUserController {
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<User> getUserById(@PathVariable Long id) {
     final User user = getUserService.execute(id);
-    return new ResponseEntity<>(user, HttpStatus.CREATED);
-  }
-
-  @GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
-    final User user = getUserService.execute(username);
-    return new ResponseEntity<>(user, HttpStatus.CREATED);
+    return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
