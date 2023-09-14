@@ -1,25 +1,40 @@
-# Read Me First
-The following was discovered as part of building this project:
+# Payment Service
 
-* The original package name 'com.payment-service.payment-service' is invalid and this project uses 'com.paymentservice.paymentservice' instead.
+Payment Service is a small project that simulates transactions between users. Each user has its own balance and can send
+an amount to other users.
+
+### Rules
+
+* There are 2 types of users: COMMON and SELLER. Both have name, balance, user type and email. A username will be
+  generated using the name by replacing any special characters with '-'. Username is also unique.
+* COMMON users can send money for both types of users, but SELLER users can only receive money.
+* Users must have balance to complete the transaction.
+
+# Technologies
+
+* Java
+* Spring Boot
+* JUnit 5
+* REST
+* H2 database
 
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Prerequisites
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.3/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.3/reference/htmlsingle/index.html#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.3/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.1.3/reference/htmlsingle/index.html#using.devtools)
+* [Java 17](https://www.azul.com/downloads/zulu-community)
+* [Maven-3](https://maven.apache.org/download.cgi)
+* [Git](https://git-scm.com/downloads)
 
-### Guides
-The following guides illustrate how to use some features concretely:
+It's possible to run the application through Docker:
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+* [Docker 23.0 +](https://www.docker.com/products/overview)
+* [Docker Compose 2.20 +](https://docs.docker.com/compose/install/)
+
+Run the following command on the project root folder:
+
+```bash
+docker compose up
+```
+
 
