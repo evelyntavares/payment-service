@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  payment-service:
+    container_name: payment-service
+    build:
+      context: .
+    image: payment-service
+    ports:
+      - "8080:8080"
+    networks:
+      - payment-service-network
+
+networks:
+  payment-service-network:
+    driver: bridge
