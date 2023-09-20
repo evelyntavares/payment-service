@@ -10,6 +10,19 @@ services:
       - "8080:8080"
     networks:
       - payment-service-network
+    depends_on:
+      - db
+  db:
+    image: "postgres:15.4"
+    container_name: db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: payment
+    ports:
+      - "5432:5432"
+    networks:
+      - payment-service-network
 
 networks:
   payment-service-network:

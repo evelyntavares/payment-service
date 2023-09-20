@@ -5,12 +5,12 @@ spring:
   application:
     name: payment-service
   datasource:
-    url: jdbc:h2:mem:payment
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://db:5432/payment
+    username: ${POSTGRESQL_USER_NAME:user}
+    password: ${POSTGRESQL_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enable: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
