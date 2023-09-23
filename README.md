@@ -16,7 +16,7 @@ an amount to other users.
 * Spring Boot
 * JUnit 5
 * REST
-* H2 database
+* PostgreSQL
 
 # Getting Started
 
