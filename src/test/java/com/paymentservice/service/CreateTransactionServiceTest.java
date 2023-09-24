@@ -1,5 +1,6 @@
 package com.paymentservice.service;
 
+import static java.util.Objects.isNull;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -41,7 +42,7 @@ class CreateTransactionServiceTest {
     when(getUserService.execute(senderId)).thenReturn(sender);
     when(getUserService.execute(receiverId)).thenReturn(receiver);
 
-    doNothing().when(validateUserTransactionService).execute(sender, BigDecimal.TEN);
+    when(validateUserTransactionService.execute(sender, BigDecimal.TEN)).thenReturn(true);
 
     final Transaction transactionExpected = createTransaction(transactionDTO, sender, receiver);
 
@@ -67,6 +68,29 @@ class CreateTransactionServiceTest {
     assertThat(valueCaptor.getTimestamp()).isNotNull();
 
     verify(updateUserService, times(1)).execute(List.of(sender, receiver));
+  }
+
+  @Test
+  void shouldNotCreateTransactionWhenTransactionIsNotAuthorized() throws Exception {
+    final Long senderId = 1L;
+    final Long receiverId = 2L;
+    final TransactionDTO transactionDTO = new TransactionDTO(BigDecimal.TEN, senderId, receiverId);
+
+    final User sender =
+        new User(1L, "Elton", "elton123", BigDecimal.TEN, UserType.SELLER, "elton@email.com");
+    final User receiver =
+        new User(2L, "David", "david007", BigDecimal.TEN, UserType.COMMON, "david@email.com");
+
+    when(getUserService.execute(senderId)).thenReturn(sender);
+    when(getUserService.execute(receiverId)).thenReturn(receiver);
+    when(validateUserTransactionService.execute(sender, BigDecimal.TEN)).thenReturn(false);
+
+    final Transaction transactionResult = createTransactionService.execute(transactionDTO);
+
+    verifyNoInteractions(transactionRepository);
+    verifyNoInteractions(updateUserService);
+
+    assertTrue(isNull(transactionResult.getId()));
   }
 
   private Transaction createTransaction(

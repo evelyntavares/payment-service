@@ -1,17 +1,23 @@
 package com.paymentservice.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+import com.paymentservice.client.AuthorizationClient;
 import com.paymentservice.domain.user.User;
 import com.paymentservice.domain.user.UserType;
+import com.paymentservice.dto.client.authorization.AuthorizationResponse;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class ValidateUserTransactionServiceTest {
+
+  @Mock private AuthorizationClient authorizationClient;
   @InjectMocks private ValidateUserTransactionService validateUserTransactionService;
 
   @Test
@@ -39,10 +45,33 @@ class ValidateUserTransactionServiceTest {
   }
 
   @Test
-  void shouldNotThrowExceptionWhenUserTypeIsCommonAndBalanceIsEnoughToPerformOperation() {
+  void
+      shouldReturnTrueWhenUserTypeIsCommonAndBalanceIsEnoughToPerformOperationAndOperationIsAuthorized()
+          throws Exception {
     final User sender = createUser(UserType.COMMON, BigDecimal.TEN);
 
-    assertDoesNotThrow(() -> validateUserTransactionService.execute(sender, BigDecimal.TEN));
+    final AuthorizationResponse authorizationResponse = new AuthorizationResponse(true);
+    when(authorizationClient.isAuthorized()).thenReturn(authorizationResponse);
+
+    final boolean isTransactionAuthorized =
+        validateUserTransactionService.execute(sender, BigDecimal.TEN);
+
+    assertTrue(isTransactionAuthorized);
+  }
+
+  @Test
+  void
+      shouldReturnFalseWhenUserTypeIsCommonAndBalanceIsEnoughToPerformOperationAndOperationIsNotAuthorized()
+          throws Exception {
+    final User sender = createUser(UserType.COMMON, BigDecimal.TEN);
+
+    final AuthorizationResponse authorizationResponse = new AuthorizationResponse(false);
+    when(authorizationClient.isAuthorized()).thenReturn(authorizationResponse);
+
+    final boolean isTransactionAuthorized =
+        validateUserTransactionService.execute(sender, BigDecimal.TEN);
+
+    assertFalse(isTransactionAuthorized);
   }
 
   private User createUser(final UserType usertype, BigDecimal balance) {

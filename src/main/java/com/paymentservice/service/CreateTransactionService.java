@@ -22,12 +22,16 @@ public class CreateTransactionService {
     final User sender = getUserService.execute(transactionDto.senderId());
     final User receiver = getUserService.execute(transactionDto.receiverId());
 
-    validateUserTransactionService.execute(sender, transactionDto.value());
+    final boolean isAuthorized =
+        validateUserTransactionService.execute(sender, transactionDto.value());
 
-    final Transaction transaction = createTransaction(transactionDto, sender, receiver);
-    final Transaction transactionSaved = transactionRepository.save(transaction);
+    Transaction transactionSaved = new Transaction();
 
-    updateUsersBalance(transactionDto, sender, receiver);
+    if (isAuthorized) {
+      final Transaction transaction = createTransaction(transactionDto, sender, receiver);
+      transactionSaved = transactionRepository.save(transaction);
+      updateUsersBalance(transactionDto, sender, receiver);
+    }
 
     return transactionSaved;
   }
