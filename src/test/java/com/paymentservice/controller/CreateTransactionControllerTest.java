@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class CreateTransactionControllerTest {
+class CreateTransactionControllerTest extends IntegrationTestConfig {
   @MockBean private CreateTransactionService createTransactionService;
 
   @Autowired private MockMvc mockMvc;

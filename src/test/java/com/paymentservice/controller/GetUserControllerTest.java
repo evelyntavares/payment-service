@@ -22,7 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class GetUserControllerTest {
+class GetUserControllerTest extends IntegrationTestConfig {
   @MockBean private GetUserService getUserService;
 
   @Autowired private MockMvc mockMvc;
