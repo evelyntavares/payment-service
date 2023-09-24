@@ -5,7 +5,7 @@ an amount to other users.
 
 ### Rules
 
-* There are 2 types of users: COMMON and SELLER. Both have name, balance, user type and email. A username will be
+* There are 2 types of users: COMMON and SELLER. Both users have name, balance, user type and email. A username will be
   generated using the name by replacing any special characters with '-'. Username is also unique.
 * COMMON users can send money for both types of users, but SELLER users can only receive money.
 * Users must have balance to complete the transaction.
