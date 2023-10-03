@@ -1,10 +1,11 @@
-package com.paymentservice.service;
+package com.paymentservice.service.impl;
 
 import static com.paymentservice.util.NormalizeStringUtils.normalize;
 
 import com.paymentservice.domain.user.User;
 import com.paymentservice.dto.UserDTO;
 import com.paymentservice.repository.UserRepository;
+import com.paymentservice.service.CreateUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

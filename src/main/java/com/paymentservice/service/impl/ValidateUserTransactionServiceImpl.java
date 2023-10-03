@@ -1,4 +1,4 @@
-package com.paymentservice.service;
+package com.paymentservice.service.impl;
 
 import static java.util.Objects.nonNull;
 
@@ -6,6 +6,7 @@ import com.paymentservice.client.AuthorizationClient;
 import com.paymentservice.domain.user.User;
 import com.paymentservice.domain.user.UserType;
 import com.paymentservice.dto.client.authorization.AuthorizationResponse;
+import com.paymentservice.service.ValidateUserTransactionService;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

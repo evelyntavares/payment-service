@@ -7,6 +7,7 @@ import com.paymentservice.client.AuthorizationClient;
 import com.paymentservice.domain.user.User;
 import com.paymentservice.domain.user.UserType;
 import com.paymentservice.dto.client.authorization.AuthorizationResponse;
+import com.paymentservice.service.impl.ValidateUserTransactionServiceImpl;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

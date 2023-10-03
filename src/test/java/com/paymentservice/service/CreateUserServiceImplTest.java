@@ -8,6 +8,7 @@ import com.paymentservice.domain.user.User;
 import com.paymentservice.domain.user.UserType;
 import com.paymentservice.dto.UserDTO;
 import com.paymentservice.repository.UserRepository;
+import com.paymentservice.service.impl.CreateUserServiceImpl;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

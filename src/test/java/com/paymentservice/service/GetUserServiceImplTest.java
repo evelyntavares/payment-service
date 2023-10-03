@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import com.paymentservice.domain.user.User;
 import com.paymentservice.domain.user.UserType;
 import com.paymentservice.repository.UserRepository;
+import com.paymentservice.service.impl.GetUserServiceImpl;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;

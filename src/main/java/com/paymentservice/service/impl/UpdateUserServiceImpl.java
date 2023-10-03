@@ -1,7 +1,8 @@
-package com.paymentservice.service;
+package com.paymentservice.service.impl;
 
 import com.paymentservice.domain.user.User;
 import com.paymentservice.repository.UserRepository;
+import com.paymentservice.service.UpdateUserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
