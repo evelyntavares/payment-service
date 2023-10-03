@@ -15,10 +15,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateUserServiceTest {
+class UpdateUserServiceImplTest {
 
   @Mock private UserRepository repository;
-  @InjectMocks private UpdateUserService updateUserService;
+  @InjectMocks private UpdateUserServiceImpl updateUserService;
 
   @Test
   void shouldUpdateASingleUser() {

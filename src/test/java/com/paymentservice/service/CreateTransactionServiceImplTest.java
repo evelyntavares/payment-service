@@ -26,7 +26,7 @@ class CreateTransactionServiceImplTest {
   @Mock private TransactionRepository transactionRepository;
   @Mock private GetUserService getUserService;
   @Mock private ValidateUserTransactionService validateUserTransactionService;
-  @Mock private UpdateUserService updateUserService;
+  @Mock private UpdateUserServiceImpl updateUserService;
 
   @Test
   void shouldCreateTransactionGivenATransactionDtoObject() throws Exception {
