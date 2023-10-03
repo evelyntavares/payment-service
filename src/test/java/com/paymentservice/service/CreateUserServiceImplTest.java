@@ -16,10 +16,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class CreateUserServiceTest {
+class CreateUserServiceImplTest {
 
   @Mock private UserRepository repository;
-  @InjectMocks private CreateUserService createUserService;
+  @InjectMocks private CreateUserServiceImpl createUserService;
 
   @Test
   void shouldReturnUserGivenAnUserDTO() {
