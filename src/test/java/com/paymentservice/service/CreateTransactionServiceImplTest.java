@@ -21,8 +21,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class CreateTransactionServiceTest {
-  @InjectMocks private CreateTransactionService createTransactionService;
+class CreateTransactionServiceImplTest {
+  @InjectMocks private CreateTransactionServiceImpl createTransactionService;
   @Mock private TransactionRepository transactionRepository;
   @Mock private GetUserService getUserService;
   @Mock private ValidateUserTransactionService validateUserTransactionService;
