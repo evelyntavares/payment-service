@@ -25,7 +25,7 @@ class CreateTransactionServiceImplTest {
   @InjectMocks private CreateTransactionServiceImpl createTransactionService;
   @Mock private TransactionRepository transactionRepository;
   @Mock private GetUserService getUserService;
-  @Mock private ValidateUserTransactionService validateUserTransactionService;
+  @Mock private ValidateUserTransactionServiceImpl validateUserTransactionService;
   @Mock private UpdateUserServiceImpl updateUserService;
 
   @Test

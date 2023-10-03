@@ -15,10 +15,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class ValidateUserTransactionServiceTest {
+class ValidateUserTransactionServiceImplTest {
 
   @Mock private AuthorizationClient authorizationClient;
-  @InjectMocks private ValidateUserTransactionService validateUserTransactionService;
+  @InjectMocks private ValidateUserTransactionServiceImpl validateUserTransactionService;
 
   @Test
   void shouldThrowExceptionWhenUserTypeIsNotAuthorizedToPerformOperation() {
