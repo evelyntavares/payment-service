@@ -16,10 +16,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class GetUserServiceTest {
+class GetUserServiceImplTest {
   @Mock private UserRepository repository;
 
-  @InjectMocks private GetUserService getUserService;
+  @InjectMocks private GetUserServiceImpl getUserService;
 
   @Test
   void shouldFindUserById() {
